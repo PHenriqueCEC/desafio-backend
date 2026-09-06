@@ -19,7 +19,7 @@ describe('Update Password (e2e)', () => {
             .patch('/users')
             .set('Authorization', `Bearer ${token}`)
             .send({
-                oldPassword: 'password123',
+                oldPassword: '123456',
                 newPassword: 'newpassword123',
             })
 

@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "b3b91830-11dc-40b9-9df1-d2c2f86fbe8d",
+		"name": "Gympass",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pedro ADMIN\",\r\n    \"email\": \"pedro9admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sessions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"pedro9admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiYWQwNmI0MjctNTA4My00YzI4LTgwMGUtMTc4ZjFhMjA0NmRmIiwiaWF0IjoxNzg4NzAxNjY4LCJleHAiOjE3ODg3MDIyNjh9._b8NL1zP3l4apBRfhcNkCniyKGKQiYuhUePJ21vY2vU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n        \"oldPassword\": \"123456\",\r\n        \"newPassword\": \"1234567\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiYWQwNmI0MjctNTA4My00YzI4LTgwMGUtMTc4ZjFhMjA0NmRmIiwiaWF0IjoxNzg4NzAxODA3LCJleHAiOjE3ODg3MDI0MDd9.dk-iLNLyNt6pg6yzrIrsvvPJhsTgfgxi7LdPdVy9O2o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/token/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"token",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiZDFjZGNhNzAtYjcxZS00N2I1LWEyYjAtY2JiOWI5NjFkZWM4IiwiaWF0IjoxNzg4NzAxOTM4LCJleHAiOjE3ODg3MDI1Mzh9.fQbd3VoXVwB_Us1p4zB5DXVhwGqj_xuxho5WedniXNo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3333/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Gym",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiQURNSU4iLCJzdWIiOiJkMWNkY2E3MC1iNzFlLTQ3YjUtYTJiMC1jYmI5Yjk2MWRlYzgiLCJpYXQiOjE3ODg3MDI4NjgsImV4cCI6MTc4ODcwMzQ2OH0.EQsK3QMtHMHbbYslSNAqU-qG32c4L7CSlt0-m2U31HY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Academia Central\",\r\n    \"description\": \"Musculação e cardio\",\r\n    \"phone\": \"11999999999\",\r\n    \"latitude\": -23.5505,\r\n    \"longitude\": -46.6333\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/gyms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"gyms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check-in academia",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiZGZjMDY4NmYtMjg4OC00MzU1LWJiZWItMWRjNTIxZjAyZWYzIiwiaWF0IjoxNzg4NzAzMTM0LCJleHAiOjE3ODg3MDM3MzR9.HvG25La94ixl7WfKbGP7nSnv4Q9MsP2JFHfd4idG6NE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": -23.5505,\r\n    \"longitude\": -46.6333\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/gyms/fbe67f90-68ba-450e-84c2-00f954c74cae/check-ins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"gyms",
+						"fbe67f90-68ba-450e-84c2-00f954c74cae",
+						"check-ins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check-in academia Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiTUVNQkVSIiwic3ViIjoiZGZjMDY4NmYtMjg4OC00MzU1LWJiZWItMWRjNTIxZjAyZWYzIiwiaWF0IjoxNzg4NzAzMTM0LCJleHAiOjE3ODg3MDM3MzR9.HvG25La94ixl7WfKbGP7nSnv4Q9MsP2JFHfd4idG6NE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": -23.5505,\r\n    \"longitude\": -46.6333\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/check-ins/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"check-ins",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
