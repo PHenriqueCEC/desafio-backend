@@ -157,6 +157,136 @@ npm run test:watch
 
 Os testes unitários não dependem de PostgreSQL. Já os testes E2E usam o ambiente Prisma configurado em `prisma/vitest-environment-prisma`. A cada execução ele cria um schema PostgreSQL temporário, aplica as migrations nesse schema e o remove ao final. Assim, os testes não alteram os dados de desenvolvimento; apenas o PostgreSQL do Docker precisa estar em execução.
 
+### ✅ Resultado dos testes E2E
+
+```text
+ Test Files  13 passed (13)
+      Tests  13 passed (13)
+   Start at  14:14:35
+   Duration  301.49s
+```
+
+### ✅ Resultado dos testes unitários
+
+```text
+ ✓  unit  src/use-cases/register.spec.ts (3 tests | 1 skipped) 132ms
+ ✓  unit  src/use-cases/update-user-password.spec.ts (3 tests) 242ms
+ ✓  unit  src/use-cases/authenticate.spec.ts (3 tests) 106ms
+ ✓  unit  src/use-cases/get-user-profile.spec.ts (2 tests) 63ms
+ ✓  unit  src/use-cases/delete-user.spec.ts (2 tests) 127ms
+ ✓  unit  src/use-cases/check-in.spec.ts (4 tests) 28ms
+ ✓  unit  src/use-cases/validate-check-in.spec.ts (3 tests) 23ms
+ ✓  unit  src/use-cases/fetch-user-check-ins-history.spec.ts (2 tests) 17ms
+ ✓  unit  src/use-cases/fetch-nearby-gyms.spec.ts (1 test) 13ms
+ ✓  unit  src/use-cases/search-gyms.spec.ts (2 tests | 1 skipped) 13ms
+ ✓  unit  src/use-cases/get-user-metrics.spec.ts (1 test) 9ms
+ ↓  unit  src/use-cases/create-gym.spec.ts (1 test | 1 skipped)
+
+ Test Files  11 passed | 1 skipped (12)
+      Tests  24 passed | 3 skipped (27)
+   Start at  14:22:12
+   Duration  39.72s (transform 11.58s, setup 0ms, collect 27.50s, tests 774ms, environment 11ms, prepare 9.54s)
+```
+
+### 📊 Cobertura de código (v8)
+
+Cobertura gerada a partir da execução dos testes unitários:
+
+```text
+File                                            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+------------------------------------------------|---------|----------|---------|---------|-------------------
+All files                                       |   92.87 |    90.11 |      96 |   92.87 |
+ prisma/vitest-environment-prisma               |      90 |       50 |     100 |      90 |
+  prisma-test-environment.ts                    |      90 |       50 |     100 |      90 | 19-21
+ src                                            |   63.63 |        0 |       0 |   63.63 |
+  app.ts                                        |   76.08 |      100 |     100 |   76.08 | 44-57
+  server.ts                                     |       0 |        0 |       0 |       0 | 1-9
+ src/env                                        |     100 |      100 |     100 |     100 |
+  index.ts                                      |     100 |      100 |     100 |     100 |
+ src/http                                       |     100 |      100 |     100 |     100 |
+  swagger.ts                                    |     100 |      100 |     100 |     100 |
+ src/http/controllers/check-ins                 |     100 |      100 |     100 |     100 |
+  create.ts                                     |     100 |      100 |     100 |     100 |
+  history.ts                                    |     100 |      100 |     100 |     100 |
+  metrics.ts                                    |     100 |      100 |     100 |     100 |
+  routes.ts                                     |     100 |      100 |     100 |     100 |
+  validate.ts                                   |     100 |      100 |     100 |     100 |
+ src/http/controllers/gyms                      |     100 |      100 |     100 |     100 |
+  create.ts                                     |     100 |      100 |     100 |     100 |
+  nearby.ts                                     |     100 |      100 |     100 |     100 |
+  routes.ts                                     |     100 |      100 |     100 |     100 |
+  search.ts                                     |     100 |      100 |     100 |     100 |
+ src/http/controllers/users                     |   88.26 |    63.63 |     100 |   88.26 |
+  authenticate.ts                               |      90 |       50 |     100 |      90 | 54-59
+  delete.ts                                     |   68.75 |       50 |     100 |   68.75 | 13-18
+  profile.ts                                    |     100 |      100 |     100 |     100 |
+  refresh.ts                                    |     100 |      100 |     100 |     100 |
+  register.ts                                   |      80 |       50 |     100 |      80 | 24-29
+  routes.ts                                     |     100 |      100 |     100 |     100 |
+  update-password.ts                            |   71.42 |       50 |     100 |   71.42 | 24-33
+ src/http/middlewares                           |   77.77 |       60 |     100 |   77.77 |
+  verify-jwt.ts                                 |      80 |       50 |     100 |      80 | 10-11
+  verify-user-role.ts                           |      75 |    66.66 |     100 |      75 | 9-10
+ src/lib                                        |     100 |      100 |     100 |     100 |
+  prisma.ts                                     |     100 |      100 |     100 |     100 |
+ src/repositories                               |       0 |        0 |       0 |       0 |
+  check-ins-repository.ts                       |       0 |        0 |       0 |       0 | 1-10
+  gyms-repository.ts                            |       0 |        0 |       0 |       0 | 1-13
+  users-repository.ts                           |       0 |        0 |       0 |       0 | 1-9
+ src/repositories/in-memory                     |   97.01 |    93.18 |     100 |   97.01 |
+  in-memory-check-ins-repository.ts             |     100 |    94.44 |     100 |     100 | 48
+  in-memory-gyms-repository.ts                  |      95 |    91.66 |     100 |      95 | 15-16
+  in-memory-users-repository.ts                 |   95.34 |    92.85 |     100 |   95.34 | 45-46
+ src/repositories/prisma                        |     100 |      100 |     100 |     100 |
+  prisma-check-ins-repository.ts                |     100 |      100 |     100 |     100 |
+  prisma-gyms-repository.ts                     |     100 |      100 |     100 |     100 |
+  prisma-users-repository.ts                    |     100 |      100 |     100 |     100 |
+ src/use-cases                                  |   98.27 |    95.74 |     100 |   98.27 |
+  authenticate.ts                               |    91.3 |    83.33 |     100 |    91.3 | 33-34
+  checkin.ts                                    |   95.65 |    85.71 |     100 |   95.65 | 35-36
+  create-gym.ts                                 |     100 |      100 |     100 |     100 |
+  delete-user.ts                                |     100 |      100 |     100 |     100 |
+  fetch-nearby-gyms.ts                          |     100 |      100 |     100 |     100 |
+  fetch-user-check-ins-history.ts               |     100 |      100 |     100 |     100 |
+  get-user-metrics.ts                           |     100 |      100 |     100 |     100 |
+  get-user-profile.ts                           |     100 |      100 |     100 |     100 |
+  register.ts                                   |     100 |      100 |     100 |     100 |
+  search-gyms.ts                                |     100 |      100 |     100 |     100 |
+  update-user-password.ts                       |     100 |      100 |     100 |     100 |
+  validate-check-in.ts                          |     100 |      100 |     100 |     100 |
+ src/use-cases/errors                           |     100 |      100 |     100 |     100 |
+  invalid-credentials-error.ts                  |     100 |      100 |     100 |     100 |
+  late-check-in-validation-error.ts             |     100 |      100 |     100 |     100 |
+  max-distance-error.ts                         |     100 |      100 |     100 |     100 |
+  max-number-of-check-ins-error.ts              |     100 |      100 |     100 |     100 |
+  resource-not-found-error.ts                   |     100 |      100 |     100 |     100 |
+  user-already-exists-error.ts                  |     100 |      100 |     100 |     100 |
+ src/use-cases/factories                        |     100 |      100 |     100 |     100 |
+  make-authenticate-use-case.ts                 |     100 |      100 |     100 |     100 |
+  make-check-in-use-case.ts                     |     100 |      100 |     100 |     100 |
+  make-create-gym-use-case.ts                   |     100 |      100 |     100 |     100 |
+  make-delete-user-use-case.ts                  |     100 |      100 |     100 |     100 |
+  make-fetch-nearby-gyms-use-case.ts            |     100 |      100 |     100 |     100 |
+  make-fetch-user-check-ins-history-use-case.ts |     100 |      100 |     100 |     100 |
+  make-get-user-metrics-use-case.ts             |     100 |      100 |     100 |     100 |
+  make-get-user-profile-use-case.ts             |     100 |      100 |     100 |     100 |
+  make-register-use-case.ts                     |     100 |      100 |     100 |     100 |
+  make-search-gyms-use-case.ts                  |     100 |      100 |     100 |     100 |
+  make-update-user-password-use-case.ts         |     100 |      100 |     100 |     100 |
+  make-validate-check-in-use-case.ts            |     100 |      100 |     100 |     100 |
+ src/utils                                      |    91.3 |     87.5 |     100 |    91.3 |
+  get-distance-between-coordinate.ts            |    91.3 |     87.5 |     100 |    91.3 | 25-26
+ src/utils/test                                 |     100 |      100 |     100 |     100 |
+  create-and-authenticate-use.ts                |     100 |      100 |     100 |     100 |
+```
+
+**Destaques da cobertura:**
+- Cobertura geral de **92,87%** em statements/lines e **96%** em funções.
+- `src/use-cases` (regras de negócio) está com **98,27%** de cobertura — reflexo direto de a lógica de domínio estar isolada e testada com repositórios in-memory.
+- `src/repositories` (os contratos/interfaces, sem implementação) aparece com 0%, o que é esperado: são apenas definições de tipo, sem lógica executável.
+- `server.ts` está com 0% pois é o ponto de entrada que sobe o servidor HTTP — não é exercitado pelos testes automatizados (unitários nem e2e), que interagem com a instância do Fastify diretamente via `app.ts`.
+- Os arquivos com cobertura parcial em `src/http/controllers/users` e `src/http/middlewares` concentram os ramos de erro (branches) menos cobertos, como respostas `500` em cenários de falha inesperada.
+
 ---
 
 ## 🏗️ Arquitetura e padrões adotados
